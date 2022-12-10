@@ -4,10 +4,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Using this project
 
-1. Clone the project, change into the directory and install the dependencies.
+1. Clone the project, change into the directory and install the dependencies specified in `package-lock.json`.
 
    ```bash
-   npm install
+   npm ci
    ```
 
 2. Create a `.env` file for environment variables in your server.
