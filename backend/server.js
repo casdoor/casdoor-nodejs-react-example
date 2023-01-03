@@ -48,9 +48,28 @@ const authCfg = {
 
 const sdk = new SDK(authCfg);
 
-const app = express()
-app.use(express.json())
+const app = express();
 
-app.get('/api/getUserInfo', (request, response) => {
-  response.json(notes)
-})
+app.get('/', (req, res) => {
+  fs.readFile(path.resolve(__dirname, './index.html'), (err, data) => {
+    res.setHeader('Content-Type', 'text/html');
+    res.send(data);
+  });
+});
+
+app.get('/api/getUserInfo', (req, res) => {
+  let urlObj = url.parse(req.url, true).query;
+  let user = sdk.parseJwtToken(urlObj.token);
+  res.send(JSON.stringify(user));
+});
+
+app.post('/', (req, res) => {
+  let urlObj = url.parse(req.url, true).query;
+  sdk.getAuthToken(urlObj.code).then(result => {
+    res.send(JSON.stringify({ token: result }));
+  });
+});
+
+app.listen(8080, () => {
+  console.log('Server listening at http://localhost:8080');
+});
