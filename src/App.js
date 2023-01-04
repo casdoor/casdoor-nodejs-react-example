@@ -5,14 +5,13 @@ import SDK from 'casdoor-js-sdk';
 function App() {
   const [username, setUsername] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const sdkConfig = {
+  const [sdk, setSdk] = useState(new SDK({
     serverUrl: "https://door.casdoor.com",
     clientId: "0ba528121ea87b3eb54d",
     appName: "app-casbin-oa",
     organizationName: "casbin",
     redirectPath: "/callback", // in accordance with casdoor configuration
-  };
-  const sdk = new SDK(sdkConfig);
+  }))
 
   useEffect(() => {
     if (window.location.href.indexOf('code') !== -1) {
@@ -38,7 +37,7 @@ function App() {
         setUsername(userinfo.name);
       }
     }
-  }, []);
+  }, [sdk]);
 
   function gotoSignInPage() {
     window.location.href = sdk.getSigninUrl();
