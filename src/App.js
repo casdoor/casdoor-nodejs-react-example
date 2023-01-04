@@ -10,7 +10,7 @@ function App() {
     clientId: "0ba528121ea87b3eb54d",
     appName: "app-casbin-oa",
     organizationName: "casbin",
-    redirectPath: "/",
+    redirectPath: "http://localhost:9000/callback",
   };
   const sdk = new SDK(sdkConfig);
 
