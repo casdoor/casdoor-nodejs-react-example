@@ -1,6 +1,6 @@
 const url = require('url')
 const { SDK } = require('casdoor-nodejs-sdk');
-const express = require('express')
+const express = require('express');
 
 //init sdk
 const cert = `

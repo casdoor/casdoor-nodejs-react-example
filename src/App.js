@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import SDK from 'https://unpkg.com/casdoor-js-sdk@latest/lib/esm/sdk.js'
+import SDK from 'https://unpkg.com/casdoor-js-sdk@latest/lib/esm/sdk.js';
 
 function App() {
   const [username, setUsername] = useState('');
