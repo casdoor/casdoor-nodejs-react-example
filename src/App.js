@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import SDK from 'https://unpkg.com/casdoor-js-sdk@latest/lib/esm/sdk.js';
+import SDK from 'casdoor-js-sdk';
 
 function App() {
   const [username, setUsername] = useState('');
@@ -46,7 +46,7 @@ function App() {
 
   function signOut() {
     sessionStorage.removeItem("token");
-    window.location.href = "http://localhost:8080";
+    window.location.href = "http://localhost:9000";
   }
 
   return (
