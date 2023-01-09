@@ -1,6 +1,34 @@
-# Casdoor NodeJS React Example
+<h1 align="center" style="border-bottom: none;">Casdoor NodeJS React Example</h1>
+
+## Architecture
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and [Express](https://expressjs.com/).
+
+The example includes two parts:
+
+Name | SDK                | Language             | Source code
+----|--------------------|----------------------|----
+Frontend | casdoor-js-sdk     | Javascript + React   | https://github.com/casdoor/casdoor-nodejs-react-example/tree/master/src 
+Backend | casdoor-nodejs-sdk | JavaScript + Express | https://github.com/casdoor/casdoor-nodejs-react-example/tree/master/backend 
+
+## Installation
+
+Example uses Casdoor to manage members. So you need to create an organization and an application for the example in a Casdoor instance.
+
+### Necessary Configurations
+
+#### Get the Code
+
+```shell
+git clone https://github.com/casdoor/casdoor
+git clone https://github.com/casdoor/casdoor-nodejs-react-example
+```
+
+#### Run Example
+- Run Casdoor
+- Configure
+
+Front end:
 
 ## Available Scripts
 
