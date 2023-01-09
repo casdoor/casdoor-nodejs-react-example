@@ -22,7 +22,9 @@ function App() {
       }
       async function getInfo() {
         let token = sessionStorage.getItem('token');
-        if (!token) { return; }
+        if (!token) {
+          return;
+        }
         else {
           return fetch(`http://localhost:8080/api/getUserInfo?token=${token}`).then(res => res.json());
         }
@@ -30,7 +32,7 @@ function App() {
 
       setTimeout(() => {
         getInfo().then(res => setInfo(res));
-      }, 100);
+      }, 1000);
 
       function setInfo(res) {
         let userinfo = res;
@@ -51,9 +53,7 @@ function App() {
   return (
     <div className="login" style={{ width: "200px", textAlign: "center" }}>
       {
-        isLoggedIn
-          ? <span id="username" className="show">userName: <span className="username">{username}</span></span>
-          : <span id="username" className="hidden">userName: <span className="username">{username}</span></span>
+        <span id="username">userName: <span className="username">{username}</span></span>
       }
       <div style={{ width: "300px", height: "50px" }}>
         {

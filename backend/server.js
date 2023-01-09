@@ -1,6 +1,9 @@
 const url = require('url')
 const { SDK } = require('casdoor-nodejs-sdk');
 const express = require('express');
+const fs = require('fs');
+const path = require('path');
+const cors = require('cors')
 
 //init sdk
 const cert = `
@@ -47,13 +50,25 @@ const sdk = new SDK(authCfg);
 
 const app = express();
 
+app.use(cors({
+  origin: 'http://localhost:9000',
+  credentials: true
+}))
+
+app.get('/', (req, res) => {
+  fs.readFile(path.resolve(__dirname, './index.html'), (err, data) => {
+    res.setHeader('Content-Type', 'text/html');
+    res.send(data);
+  });
+});
+
 app.get('/api/getUserInfo', (req, res) => {
   let urlObj = url.parse(req.url, true).query;
   let user = sdk.parseJwtToken(urlObj.token);
   res.send(JSON.stringify(user));
 });
 
-app.post('/', (req, res) => {
+app.post('*', (req, res) => {
   let urlObj = url.parse(req.url, true).query;
   sdk.getAuthToken(urlObj.code).then(result => {
     res.send(JSON.stringify({ token: result }));
