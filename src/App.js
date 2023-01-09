@@ -29,6 +29,7 @@ function App() {
         sdk.signin("http://localhost:8080").then(res => {
           sessionStorage.setItem('token', res.token);
           setTokenReceived(true);
+          setIsLoggedIn(true);
         });
       }
     }
@@ -61,6 +62,7 @@ function App() {
 
   function signOut() {
     sessionStorage.removeItem("token");
+    setTokenReceived(false);
     window.location.href = "http://localhost:9000";
   }
 
@@ -72,7 +74,7 @@ function App() {
       <div style={{ width: "300px", height: "50px" }}>
         {
           isLoggedIn
-            ? <button id="signOut" style={{ width: "200px", height: "50px" }} onClick={signOut}>logout</button>
+            ? <button id="signOut" style={{ width: "200px", height: "50px" }} onClick={signOut}>Logout</button>
             : <button id="signIn" style={{ width: "200px", height: "50px" }} onClick={gotoSignInPage}>Login with Casdoor</button>
         }
       </div>
