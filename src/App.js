@@ -18,6 +18,9 @@ function App() {
       if (!sessionStorage.getItem('token')) {
         sdk.signin("http://localhost:8080").then(res => {
           sessionStorage.setItem('token', res.token);
+          setTimeout(() => {
+            getInfo().then(res => setInfo(res));
+          }, 100);
         });
       }
       async function getInfo() {
@@ -29,10 +32,6 @@ function App() {
           return fetch(`http://localhost:8080/api/getUserInfo?token=${token}`).then(res => res.json());
         }
       }
-
-      setTimeout(() => {
-        getInfo().then(res => setInfo(res));
-      }, 1000);
 
       function setInfo(res) {
         let userinfo = res;
