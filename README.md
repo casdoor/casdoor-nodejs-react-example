@@ -6,10 +6,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 The example includes two parts:
 
-Name | SDK                | Language             | Source code
-----|--------------------|----------------------|----
-Frontend | casdoor-js-sdk     | Javascript + React   | https://github.com/casdoor/casdoor-nodejs-react-example/tree/master/src 
-Backend | casdoor-nodejs-sdk | JavaScript + Express | https://github.com/casdoor/casdoor-nodejs-react-example/tree/master/backend 
+Name     | SDK                | Language             | Source code
+----------|--------------------|----------------------|----
+ Frontend | casdoor-js-sdk     | Javascript + React   | https://github.com/casdoor/casdoor-nodejs-react-example/tree/master/src 
+ Backend  | casdoor-nodejs-sdk | JavaScript + Express | https://github.com/casdoor/casdoor-nodejs-react-example/tree/master/backend 
 
 ## Installation
 
@@ -104,4 +104,4 @@ Open [http://localhost:9000](http://localhost:9000) to view it in your browser.
 
 *Password input is clipped out of the recording.*
 
-![Casdoor Login.gif](https://s2.loli.net/2023/01/04/D9uIzdifLV2vh5y.gif)
+![react-express-illustration.gif](public/react-express-illustration.gif)
