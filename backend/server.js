@@ -78,7 +78,9 @@ app.get('/', (req, res) => {
 
 app.get('/api/getUserInfo', (req, res) => {
   let urlObj = url.parse(req.url, true).query;
+  console.log(urlObj)
   let user = sdk.parseJwtToken(urlObj.token);
+  console.log(user)
   res.send(JSON.stringify(user));
 });
 

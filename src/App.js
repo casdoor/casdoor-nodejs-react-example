@@ -15,28 +15,29 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import SDK from 'casdoor-js-sdk';
+import {config} from "./Setting";
 
 function App() {
   const [username, setUsername] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [sdk, setSdk] = useState(new SDK({
-    serverUrl: "https://door.casdoor.com",
-    clientId: "0ba528121ea87b3eb54d",
-    appName: "app-casbin-oa",
-    organizationName: "casbin",
-    redirectPath: "/callback", // in accordance with casdoor configuration
-  }))
+  const [sdk, setSdk] = useState(new SDK(config));
+  const [tokenReceived, setTokenReceived] = useState(false);
 
   useEffect(() => {
     if (window.location.href.indexOf('code') !== -1) {
       if (!sessionStorage.getItem('token')) {
         sdk.signin("http://localhost:8080").then(res => {
           sessionStorage.setItem('token', res.token);
-          setTimeout(() => {
-            getInfo().then(res => setInfo(res));
-          }, 100);
+          setTokenReceived(true);
         });
       }
+    }
+  }, [sdk]);
+
+  useEffect(() => {
+    if (sessionStorage.getItem('token')) {
+      getInfo().then(res => setInfo(res));
+
       async function getInfo() {
         let token = sessionStorage.getItem('token');
         if (!token) {
@@ -52,7 +53,7 @@ function App() {
         setUsername(userinfo.name);
       }
     }
-  }, [sdk]);
+  }, [tokenReceived])
 
   function gotoSignInPage() {
     window.location.href = sdk.getSigninUrl();
