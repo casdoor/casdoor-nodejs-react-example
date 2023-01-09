@@ -1,5 +1,11 @@
 <h1 align="center" style="border-bottom: none;">Casdoor NodeJS React Example</h1>
 
+## Demo
+
+*Password input is clipped out of the recording.*
+
+![react-express-illustration.gif](public/react-express-illustration.gif)
+
 ## Architecture
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and [Express](https://expressjs.com/).
@@ -99,9 +105,3 @@ Note that the port running frontend is set in `package.json`:
 `"start": "PORT=9000 react-scripts start"`
 
 Open [http://localhost:9000](http://localhost:9000) to view it in your browser.
-
-## Demo
-
-*Password input is clipped out of the recording.*
-
-![react-express-illustration.gif](public/react-express-illustration.gif)
