@@ -25,9 +25,9 @@ function App() {
 
   useEffect(() => {
     if (window.location.href.indexOf('code') !== -1) {
-      if (!localStorage.getItem('token')) {
+      if (!sessionStorage.getItem('token')) {
         sdk.signin("http://localhost:8080").then(res => {
-          localStorage.setItem('token', res.token);
+          sessionStorage.setItem('token', res.token);
           setTokenReceived(true);
         });
       }
@@ -35,11 +35,11 @@ function App() {
   }, [sdk]);
 
   useEffect(() => {
-    if (localStorage.getItem('token')) {
+    if (sessionStorage.getItem('token')) {
       getInfo().then(res => setInfo(res));
 
       async function getInfo() {
-        let token = localStorage.getItem('token');
+        let token = sessionStorage.getItem('token');
         if (!token) {
           return;
         }
@@ -63,7 +63,7 @@ function App() {
   }
 
   function signOut() {
-    localStorage.removeItem("token");
+    sessionStorage.removeItem("token");
     setTokenReceived(false);
     window.location.href = "http://localhost:9000";
   }

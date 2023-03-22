@@ -5,7 +5,7 @@
 *Password input is clipped out of the recording.*
 
 <!-- ![react-express-illustration.gif](public/react-express-illustration.gif) -->
-https://user-images.githubusercontent.com/41513919/226655440-5e050e41-d2ee-4013-aa17-57ed3c7396fc.mp4
+![](public/demo.mp4)
 
 ## Architecture
 
