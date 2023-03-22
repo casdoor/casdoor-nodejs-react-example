@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+
+.login-select {
+  width: 200px;
+  height: 40px;
+  padding: 0 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  margin-bottom: 10px;
+}

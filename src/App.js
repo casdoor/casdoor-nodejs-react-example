@@ -15,7 +15,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import SDK from 'casdoor-js-sdk';
-import {config} from "./Setting";
+import { config } from "./Setting";
 
 function App() {
   const [username, setUsername] = useState('');
@@ -29,7 +29,6 @@ function App() {
         sdk.signin("http://localhost:8080").then(res => {
           sessionStorage.setItem('token', res.token);
           setTokenReceived(true);
-          setIsLoggedIn(true);
         });
       }
     }
@@ -52,12 +51,15 @@ function App() {
       function setInfo(res) {
         let userinfo = res;
         setUsername(userinfo.name);
+        setIsLoggedIn(true);
       }
     }
   }, [tokenReceived])
 
   function gotoSignInPage() {
-    window.location.href = sdk.getSigninUrl();
+    document.getElementById('loginMethod').value === "signin"
+    ? window.location.href = sdk.getSigninUrl()
+    : sdk.popupSignin("http://localhost:8080");
   }
 
   function signOut() {
@@ -71,11 +73,17 @@ function App() {
       {
         <span id="result">userName: <span className="username">{username}</span></span>
       }
-      <div style={{ width: "300px", height: "50px" }}>
+      <div style={{ width: "300px", height: "100px" }}>
         {
           isLoggedIn
             ? <button id="signOut" style={{ width: "200px", height: "50px" }} onClick={signOut}>Logout</button>
-            : <button id="signIn" style={{ width: "200px", height: "50px" }} onClick={gotoSignInPage}>Login with Casdoor</button>
+            : <div>
+                <select id="loginMethod" className="login-select">
+                  <option value="signin">Signin</option>
+                  <option value="popupSignin">PopupSignin</option>
+                </select>
+                <button id="signIn" style={{ width: "200px", height: "50px" }} onClick={gotoSignInPage}>Login with Casdoor</button>
+              </div>
         }
       </div>
     </div>
