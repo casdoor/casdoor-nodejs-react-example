@@ -54,10 +54,11 @@ nCCJHBcAyFnm1hdvdwEdH33jDBjNB6ciotJZrf/3VYaIWSalADosHAgMWfXuWP+h
 
 const authCfg = {
   endpoint: 'https://door.casdoor.com',
-  clientId: '0ba528121ea87b3eb54d',
-  clientSecret: '04f4ca22101529a3503d5a653a877b4e8403edf0',
+  clientId: '014ae4bd048734ca2dea',
+  clientSecret: 'f26a4115725867b7bb7b668c81e1f8f7fae1544d',
   certificate: cert,
   orgName: 'casbin',
+  appName: 'app-casnode',
 }
 
 const sdk = new SDK(authCfg);
