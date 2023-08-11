@@ -53,9 +53,9 @@ nCCJHBcAyFnm1hdvdwEdH33jDBjNB6ciotJZrf/3VYaIWSalADosHAgMWfXuWP+h
 `;
 
 const authCfg = {
-  endpoint: 'https://door.casdoor.com',
-  clientId: '0ba528121ea87b3eb54d',
-  clientSecret: '04f4ca22101529a3503d5a653a877b4e8403edf0',
+  endpoint: 'http://localhost:7001',
+  clientId: '2edbd1666551913b8f72',
+  clientSecret: 'd07b745402ef616e4ee0b0dff63dbd33e76c9985',
   certificate: cert,
   orgName: 'casbin',
 }
