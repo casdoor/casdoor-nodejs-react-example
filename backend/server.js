@@ -58,6 +58,7 @@ const authCfg = {
   clientSecret: 'd07b745402ef616e4ee0b0dff63dbd33e76c9985',
   certificate: cert,
   orgName: 'casbin',
+  appName: 'app-casnode',
 }
 
 const sdk = new SDK(authCfg);

@@ -3,5 +3,6 @@ export const config = {
   clientId: "2edbd1666551913b8f72",
   appName: "testapp",
   organizationName: "casbin",
+  appName: "app-casnode",
   redirectPath: "/callback", // in accordance with casdoor configuration
 };
