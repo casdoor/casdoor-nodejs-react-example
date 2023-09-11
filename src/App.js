@@ -20,7 +20,7 @@ import { config } from "./Setting";
 function App() {
   const [username, setUsername] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [sdk, setSdk] = useState(new SDK(config));
+  const [sdk] = useState(new SDK(config));
   const [tokenReceived, setTokenReceived] = useState(false);
 
   useEffect(() => {
