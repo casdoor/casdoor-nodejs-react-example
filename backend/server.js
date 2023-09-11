@@ -87,8 +87,11 @@ app.get('/api/getUserInfo', (req, res) => {
 
 app.post('*', (req, res) => {
   let urlObj = url.parse(req.url, true).query;
-  sdk.getAuthToken(urlObj.code).then(result => {
-    res.send(JSON.stringify({ token: result }));
+  sdk.getAuthToken(urlObj.code).then(response => {
+    console.log(response)
+    const accessToken = response.access_token;
+    // const refresh_token = response.refresh_token;
+    res.send(JSON.stringify({ token: accessToken }));
   });
 });
 
