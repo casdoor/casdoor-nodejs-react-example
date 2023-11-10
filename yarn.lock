@@ -3006,10 +3006,10 @@ casdoor-js-sdk@0.9.1:
   resolved "https://registry.yarnpkg.com/casdoor-js-sdk/-/casdoor-js-sdk-0.9.1.tgz#ea6d67f8012202a7c3bb68413e14c09e0beb67d2"
   integrity sha512-R26ftlL285nGfj3fCBXv8O7AWQqbMgl9lJ7iygTFIAQYfFi493TyD8pTL5eZN7rREKdHW2QHZZON0Oh5SlOhXw==
 
-casdoor-nodejs-sdk@1.5.1:
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/casdoor-nodejs-sdk/-/casdoor-nodejs-sdk-1.5.1.tgz#d262d164733ef6c65784c0bc684e8b423c08709e"
-  integrity sha512-UPffbqml73Q066cn0MAxwZBPcQHUqS2qhttHnTOM7brQaB9/9BiXP/gdNQmSTCQhOgrl2JSS7lUA0oVX9n9t/A==
+casdoor-nodejs-sdk@1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/casdoor-nodejs-sdk/-/casdoor-nodejs-sdk-1.7.0.tgz#c9c1f4d33dbd0cf61294c660f577b374f7453528"
+  integrity sha512-JQNcsdUVvLU1j9joRavNc/BNiMTPVz+SB3+xUXdjaUj/fdK350m6Xo1u644V3vw925e4YGWP1Z2/ZOUsIeQFkA==
   dependencies:
     axios "^0.22.0"
     jsonwebtoken "^8.5.1"
