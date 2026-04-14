@@ -57,9 +57,10 @@ function App() {
   }, [tokenReceived])
 
   function gotoSignInPage() {
-    document.getElementById('loginMethod').value === "signin"
+    const loginMethod = document.getElementById('loginMethod').value;
+    loginMethod === "signin"
     ? window.location.href = sdk.getSigninUrl()
-    : sdk.popupSignin("http://localhost:8080");
+    : sdk.popupSignin("http://localhost:8080", undefined, undefined, loginMethod === "popupSigninIframe" ? "iframe" : "window");
   }
 
   function signOut() {
@@ -81,6 +82,7 @@ function App() {
                 <select id="loginMethod" className="login-select">
                   <option value="signin">Signin</option>
                   <option value="popupSignin">PopupSignin</option>
+                  <option value="popupSigninIframe">PopupSigninIframe</option>
                 </select>
                 <button id="signIn" style={{ width: "200px", height: "50px" }} onClick={gotoSignInPage}>Login with Casdoor</button>
               </div>
