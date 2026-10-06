@@ -11,7 +11,7 @@ An example web app that signs users in with [Casdoor](https://casdoor.ai/), with
 | Frontend | [casdoor-js-sdk](https://github.com/casdoor/casdoor-js-sdk)         | JavaScript + React   | 9000 |
 | Backend  | [casdoor-nodejs-sdk](https://github.com/casdoor/casdoor-nodejs-sdk) | JavaScript + Express | 8080 |
 
-Demo: [public/demo.mp4](public/demo.mp4)
+![demo](public/demo.gif)
 
 ## How it works
 
