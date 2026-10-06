@@ -12,14 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-const url = require('url')
 const { SDK } = require('casdoor-nodejs-sdk');
 const express = require('express');
-const fs = require('fs');
-const path = require('path');
-const cors = require('cors')
+const cors = require('cors');
 
-//init sdk
 const cert = `
 -----BEGIN CERTIFICATE-----
 MIIE+TCCAuGgAwIBAgIDAeJAMA0GCSqGSIb3DQEBCwUAMDYxHTAbBgNVBAoTFENh
@@ -59,40 +55,39 @@ const authCfg = {
   certificate: cert,
   orgName: 'casbin',
   appName: 'app-casnode',
-}
+};
 
 const sdk = new SDK(authCfg);
 
 const app = express();
-
 app.use(cors({
   origin: 'http://localhost:9000',
-  credentials: true
-}))
+  credentials: true,
+}));
 
-app.get('/', (req, res) => {
-  fs.readFile(path.resolve(__dirname, './index.html'), (err, data) => {
-    res.setHeader('Content-Type', 'text/html');
-    res.send(data);
-  });
+// Exchanges the code that Casdoor redirected back with for an access token,
+// called by sdk.signin() and sdk.popupSignin() of casdoor-js-sdk
+app.post('/api/signin', async (req, res) => {
+  try {
+    const token = await sdk.getAuthToken(req.query.code);
+    if (!token.access_token) {
+      res.status(400).json({ status: 'error', msg: 'failed to get the access token' });
+      return;
+    }
+    res.json({ status: 'ok', token: token.access_token });
+  } catch (e) {
+    res.status(400).json({ status: 'error', msg: e.message });
+  }
 });
 
+// Verifies the access token with the certificate and returns the user in it
 app.get('/api/getUserInfo', (req, res) => {
-  let urlObj = url.parse(req.url, true).query;
-  console.log(urlObj)
-  let user = sdk.parseJwtToken(urlObj.token);
-  console.log(user)
-  res.send(JSON.stringify(user));
-});
-
-app.post('*', (req, res) => {
-  let urlObj = url.parse(req.url, true).query;
-  sdk.getAuthToken(urlObj.code).then(response => {
-    console.log(response)
-    const accessToken = response.access_token;
-    // const refresh_token = response.refresh_token;
-    res.send(JSON.stringify({ token: accessToken }));
-  });
+  const token = (req.headers.authorization || '').replace(/^Bearer /, '');
+  try {
+    res.json(sdk.parseJwtToken(token));
+  } catch (e) {
+    res.status(401).json({ status: 'error', msg: e.message });
+  }
 });
 
 app.listen(8080, () => {

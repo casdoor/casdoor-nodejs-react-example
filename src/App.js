@@ -27,7 +27,12 @@ function App() {
     if (window.location.href.indexOf('code') !== -1) {
       if (!sessionStorage.getItem('token')) {
         sdk.signin("http://localhost:8080").then(res => {
+          if (res.status !== 'ok') {
+            alert(`Login failed: ${res.msg}`);
+            return;
+          }
           sessionStorage.setItem('token', res.token);
+          window.history.replaceState({}, '', '/');
           setTokenReceived(true);
         });
       }
@@ -44,7 +49,9 @@ function App() {
           return;
         }
         else {
-          return fetch(`http://localhost:8080/api/getUserInfo?token=${token}`).then(res => res.json());
+          return fetch(`http://localhost:8080/api/getUserInfo`, {
+            headers: { Authorization: `Bearer ${token}` },
+          }).then(res => res.json());
         }
       }
 
